@@ -62,11 +62,26 @@ avfa = cities_table.aggregate(lambda num : sum(num) / len(num), 'temperature')
 print(avfa)
 
 print('All the cities in Italy :')
+ait = cities_table.filter(lambda ct : ct['country'] == 'Italy')
+print([ct['city'] for ct in ait])
 
 print('The average temperature of all the cities in Italy :')
+avit = [float(tp['temperature']) for tp in ait]
+print(sum(avit) / len(avit))
 
 print('The max temperature of all the cities in Italy :')
+print(max(avit))
 
 print('The min temperature of all the cities in Italy :')
+print(min(avit))
 
-print()
+# - print the average temperature for all the cities in Sweden
+print('The average temperature of all the cities in Sweden :')
+asw = cities_table.filter(lambda ct : ct['country'] == 'Sweden')
+tsw = [float(ct['temperature']) for ct in asw]
+print(sum(tsw) / len(tsw))
+
+# - print the max temperature for all the cities in Sweden
+print('The max temperature for all the cities in Sweden :')
+tsw = [float(ct['temperature']) for ct in asw]
+print(max(tsw))
